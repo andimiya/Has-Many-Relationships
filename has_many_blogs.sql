@@ -3,7 +3,7 @@ DROP USER IF EXISTS has_many_user;
 CREATE USER has_many_user;
 CREATE DATABASE has_many_blogs WITH OWNER has_many_user;
 
-c\ has_many_user
+\c has_many_blogs has_many_user
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
@@ -14,7 +14,6 @@ CREATE TABLE users (
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
 );
-
 
 DROP TABLE IF EXISTS posts;
 CREATE TABLE posts (
