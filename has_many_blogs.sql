@@ -1,5 +1,9 @@
+DROP DATABASE IF EXISTS has_many_blogs;
+DROP USER IF EXISTS has_many_user;
 CREATE USER has_many_user;
-CREATE DATABASE has_many_blogs OWNER has_many_user;
+CREATE DATABASE has_many_blogs WITH OWNER has_many_user;
+
+c\ has_many_blogs has_many_user
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
@@ -8,22 +12,27 @@ CREATE TABLE users (
   first_name varchar(90) NULL DEFAULT NULL,
   last_name varchar(90) NULL DEFAULT NULL,
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
-  updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+  updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
+);
+
 
 DROP TABLE IF EXISTS posts;
 CREATE TABLE posts (
   id SERIAL NOT NULL PRIMARY KEY,
-  title varchar(180) NULL DEFAULT NULL REFERENCES users (id),
+  title varchar(180) NULL DEFAULT NULL,
   url varchar(510) NULL DEFAULT NULL,
   content TEXT NULL DEFAULT NULL,
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+  users_fk_id INTEGER REFERENCES users(id) NOT NULL
+);
 
 DROP TABLE IF EXISTS comments;
 CREATE TABLE comments (
-  id SERIAL NOT NULL PRIMARY KEY,
-  body varchar(510) NULL DEFAULT NULL REFERENCES posts (id),
+  id SERIAL NOT NULL,
+  body varchar(510) NULL DEFAULT NULL,
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
-
-
+  users_fk_id INTEGER REFERENCES users(id) NOT NULL,
+  posts_fk_id INTEGER REFERENCES posts(id) NOT NULL
+);
