@@ -17,21 +17,27 @@
 --   INNER JOIN posts ON posts.users_id = users.id
 --     WHERE first_name = 'Norene' AND last_name = 'Schmitt';
 
--- -- #4
--- SELECT users.username
+-- -- #5
+-- SELECT users.username, posts.created_at
 --   FROM users
 --   INNER JOIN posts ON posts.users_id = users.id
 --     WHERE posts.created_at > TIMESTAMP WITH TIME ZONE '2015-01-01';
 
--- -- #5
+-- -- #6
 -- SELECT posts.title, posts.content, users.username
 --   FROM users
 --   INNER JOIN posts ON posts.users_id = users.id
 --     WHERE users.created_at > TIMESTAMP WITH TIME ZOqNE '2015-01-01';
 
--- #6
-SELECT posts.title, comments.*
+-- -- #7
+-- SELECT posts.title, comments.*
+--   FROM users
+--   INNER JOIN posts ON posts.users_id = users.id
+--   INNER JOIN comments ON comments.posts_id = posts.id;
+
+-- #8
+SELECT posts.title, posts.url, comments.body
   FROM users
   INNER JOIN posts ON posts.users_id = users.id
-  INNER JOIN comments ON comments.posts_id = posts.id;
-
+  INNER JOIN comments ON comments.posts_id = posts.id
+    WHERE posts.created_at < TIMESTAMP WITH TIME ZONE '2015-01-01';
