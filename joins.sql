@@ -56,9 +56,17 @@
 --   INNER JOIN comments ON comments.posts_id = posts.id
 --     WHERE comments.body LIKE '%USB%';
 
--- #11
-SELECT posts.title, users.first_name, users.last_name, comments.body
+-- -- #11 (855 Results)
+-- SELECT posts.title, users.first_name, users.last_name, comments.body
+--   FROM users
+--   INNER JOIN posts ON posts.users_id = users.id
+--   INNER JOIN comments ON comments.posts_id = posts.id
+--     WHERE comments.body LIKE '%matrix%';
+
+-- #12 (102 Results)
+SELECT users.first_name, users.last_name, comments.body
   FROM users
   INNER JOIN posts ON posts.users_id = users.id
   INNER JOIN comments ON comments.posts_id = posts.id
-    WHERE comments.body LIKE '%matrix%';
+    WHERE comments.body LIKE '%SSL%'
+    AND posts.content LIKE '%dolorum%';
