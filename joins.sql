@@ -35,9 +35,17 @@
 --   INNER JOIN posts ON posts.users_id = users.id
 --   INNER JOIN comments ON comments.posts_id = posts.id;
 
--- #8
+-- -- #8
+-- SELECT posts.title, posts.url, comments.body
+--   FROM users
+--   INNER JOIN posts ON posts.users_id = users.id
+--   INNER JOIN comments ON comments.posts_id = posts.id
+--     WHERE posts.created_at < TIMESTAMP WITH TIME ZONE '2015-01-01';
+
+-- #9
 SELECT posts.title, posts.url, comments.body
   FROM users
   INNER JOIN posts ON posts.users_id = users.id
   INNER JOIN comments ON comments.posts_id = posts.id
-    WHERE posts.created_at < TIMESTAMP WITH TIME ZONE '2015-01-01';
+    WHERE posts.created_at > TIMESTAMP WITH TIME ZONE '2015-01-01';
+
