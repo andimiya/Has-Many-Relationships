@@ -11,7 +11,9 @@ SELECT first_name, last_name, posts.*
   INNER JOIN posts ON posts.users_id = users.id
     WHERE users_id = 200;
 
-SELECT first_name, last_name, posts.*
+-- #4
+SELECT username, posts.*
   FROM users
   INNER JOIN posts ON posts.users_id = users.id
-    WHERE users_id = 200;
+    WHERE first_name = 'Norene' AND last_name = 'Schmitt';
+
