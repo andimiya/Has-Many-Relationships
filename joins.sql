@@ -17,3 +17,9 @@ SELECT username, posts.*
   INNER JOIN posts ON posts.users_id = users.id
     WHERE first_name = 'Norene' AND last_name = 'Schmitt';
 
+-- #4
+SELECT users.username
+  FROM users
+  INNER JOIN posts ON posts.users_id = users.id
+    WHERE posts.created_at > TIMESTAMP WITH TIME ZONE '2015-01-01';
+
