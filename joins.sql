@@ -98,6 +98,7 @@ SELECT comments.created_at, comments.body
   INNER JOIN comments ON comments.posts_id = posts.id
     WHERE posts.created_at > TIMESTAMP WITH TIME ZONE '2015-07-14 00:00:00-10';
 
+
 -- --Additional Query #3
 -- SELECT users.username
 --   FROM users
